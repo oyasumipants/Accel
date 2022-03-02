@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  db:
+    image: mysql:5.7
+    container_name: gh_mysql
+    tty: true
+    ports:
+      - 7895:3306
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    volumes:
+      - ./db/init:/docker-entrypoint-initdb.d
+      - gacha-db-volume:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=gacha_db
+      - MYSQL_USER=gacha_lcl
+      - MYSQL_PASSWORD=gacaha
+      - MYSQL_ROOT_PASSWORD=gacha
+      - SERVICE_NAME=mysql
+
+volumes:
+  gacha-db-volume:
