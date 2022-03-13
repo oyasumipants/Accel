@@ -4,6 +4,7 @@ services:
   db:
     image: mysql:5.7
     container_name: gh_mysql
+    restart: unless-stopped
     tty: true
     ports:
       - 7895:3306
